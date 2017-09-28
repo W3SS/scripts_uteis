@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Rutorika/Sortable Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_token" content="eyJpdiI6ImV0S1NKelpaTDIzdkN2UGhkc1doN1E9PSIsInZhbHVlIjoidlBkXC9hTmtvb3NsdFJqN1V6Sk1Kd2ZFY3MrUllhTU9BN1p2SE1haWFobWhnaVprTEQ1VFVrekFuWEJDMWpLVUpTTG1iU2V3ZzlFN25BVlhuY09pWlZnPT0iLCJtYWMiOiIxYjkzYTljNGMzNmM1MmMzZTU3ODc2ZGMyOWQyOGMxYjQwODMxMTg1ZTNhZjJkOGY0OTEwNTBkMGIwZDdmODQ4In0=" />
+
+    <!-- Loading Bootstrap -->
+    <link href="/vendor/flat-ui/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Loading Flat UI -->
+    <link href="/vendor/flat-ui/css/flat-ui.css" rel="stylesheet">
+
+    <style>
+        .grid-actions {
+            text-align: right;
+        }
+
+        .grid-actions .btn {
+            margin-left: 16px;
+        }
+        .sortable-handle {
+            cursor: move;
+            width: 40px;
+            color: #ddd;
+        }
+        .id-column {
+            width: 40px;
+        }
+
+        /** notifications style */
+        .alert {
+            font-size: 14px;
+        }
+        .bootstrap-growl .close {
+            margin-left: 10px;
+        }
+
+        /** forms */
+    </style>
+    <link rel="shortcut icon" href="/favicon.ico">
+</head>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+            <span class="sr-only">Toggle navigation</span>
+        </button>
+        <a class="navbar-brand" href="#">Porcelain</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar-collapse-01">
+        <ul class="nav navbar-nav">
+            <li><a href="/">Articles</a></li>
+            <li><a href="/grouped">Grouped articles</a></li>
+            <li><a href="/posts">Many to many</a></li>
+            <li><a href="/albums-and-videos">Polymorphic many to many (inversed)</a></li>
+        </ul>
+        <p class="navbar-text navbar-right">Signed in as <a class="navbar-link" href="#">Administrator</a></p>
+    </div><!-- /.navbar-collapse -->
+</nav><!-- /navbar -->
+<div class="container">
+    
+        <h3>Articles</h3>
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th></th>
+            <th>#</th>
+            <th>title</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody class="sortable" data-entityname="articles">
+                    <tr data-itemId="6">
+                <td class="sortable-handle"><span class="glyphicon glyphicon-sort"></span></td>
+                <td class="id-column">6</td>
+                <td>Aliquam natus non.</td>
+                <td class="grid-actions">
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            </tr>
+                    <tr data-itemId="7">
+                <td class="sortable-handle"><span class="glyphicon glyphicon-sort"></span></td>
+                <td class="id-column">7</td>
+                <td>Sit cumque.</td>
+                <td class="grid-actions">
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            </tr>
+                    <tr data-itemId="3">
+                <td class="sortable-handle"><span class="glyphicon glyphicon-sort"></span></td>
+                <td class="id-column">3</td>
+                <td>Dolor quia dicta.</td>
+                <td class="grid-actions">
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            </tr>
+                    <tr data-itemId="8">
+                <td class="sortable-handle"><span class="glyphicon glyphicon-sort"></span></td>
+                <td class="id-column">8</td>
+                <td>Rem dolores.</td>
+                <td class="grid-actions">
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            </tr>
+                    <tr data-itemId="10">
+                <td class="sortable-handle"><span class="glyphicon glyphicon-sort"></span></td>
+                <td class="id-column">10</td>
+                <td>Quia quasi magni.</td>
+                <td class="grid-actions">
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            </tr>
+                    <tr data-itemId="2">
+                <td class="sortable-handle"><span class="glyphicon glyphicon-sort"></span></td>
+                <td class="id-column">2</td>
+                <td>Dolorum velit sed.</td>
+                <td class="grid-actions">
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            </tr>
+                    <tr data-itemId="4">
+                <td class="sortable-handle"><span class="glyphicon glyphicon-sort"></span></td>
+                <td class="id-column">4</td>
+                <td>Assumenda velit.</td>
+                <td class="grid-actions">
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            </tr>
+                    <tr data-itemId="11">
+                <td class="sortable-handle"><span class="glyphicon glyphicon-sort"></span></td>
+                <td class="id-column">11</td>
+                <td>Inventore est.</td>
+                <td class="grid-actions">
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            </tr>
+                    <tr data-itemId="5">
+                <td class="sortable-handle"><span class="glyphicon glyphicon-sort"></span></td>
+                <td class="id-column">5</td>
+                <td>Et voluptates.</td>
+                <td class="grid-actions">
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            </tr>
+                    <tr data-itemId="1">
+                <td class="sortable-handle"><span class="glyphicon glyphicon-sort"></span></td>
+                <td class="id-column">1</td>
+                <td>Eius eos esse.</td>
+                <td class="grid-actions">
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            </tr>
+                    <tr data-itemId="16">
+                <td class="sortable-handle"><span class="glyphicon glyphicon-sort"></span></td>
+                <td class="id-column">16</td>
+                <td>Vero nihil.</td>
+                <td class="grid-actions">
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            </tr>
+                    <tr data-itemId="12">
+                <td class="sortable-handle"><span class="glyphicon glyphicon-sort"></span></td>
+                <td class="id-column">12</td>
+                <td>Facilis vitae rem.</td>
+                <td class="grid-actions">
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            </tr>
+                    <tr data-itemId="9">
+                <td class="sortable-handle"><span class="glyphicon glyphicon-sort"></span></td>
+                <td class="id-column">9</td>
+                <td>Ut nemo nisi.</td>
+                <td class="grid-actions">
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            </tr>
+                    <tr data-itemId="13">
+                <td class="sortable-handle"><span class="glyphicon glyphicon-sort"></span></td>
+                <td class="id-column">13</td>
+                <td>Consequatur natus eveniet.</td>
+                <td class="grid-actions">
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            </tr>
+                    <tr data-itemId="20">
+                <td class="sortable-handle"><span class="glyphicon glyphicon-sort"></span></td>
+                <td class="id-column">20</td>
+                <td>Temporibus eaque mollitia.</td>
+                <td class="grid-actions">
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            </tr>
+                    <tr data-itemId="14">
+                <td class="sortable-handle"><span class="glyphicon glyphicon-sort"></span></td>
+                <td class="id-column">14</td>
+                <td>Rerum blanditiis.</td>
+                <td class="grid-actions">
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            </tr>
+                    <tr data-itemId="15">
+                <td class="sortable-handle"><span class="glyphicon glyphicon-sort"></span></td>
+                <td class="id-column">15</td>
+                <td>Ipsam amet recusandae.</td>
+                <td class="grid-actions">
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            </tr>
+                    <tr data-itemId="17">
+                <td class="sortable-handle"><span class="glyphicon glyphicon-sort"></span></td>
+                <td class="id-column">17</td>
+                <td>Nam voluptas.</td>
+                <td class="grid-actions">
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            </tr>
+                    <tr data-itemId="18">
+                <td class="sortable-handle"><span class="glyphicon glyphicon-sort"></span></td>
+                <td class="id-column">18</td>
+                <td>Blanditiis rerum.</td>
+                <td class="grid-actions">
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            </tr>
+                    <tr data-itemId="19">
+                <td class="sortable-handle"><span class="glyphicon glyphicon-sort"></span></td>
+                <td class="id-column">19</td>
+                <td>Voluptatem quia.</td>
+                <td class="grid-actions">
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            </tr>
+                </tbody>
+    </table>
+</div>
+<!-- /.container -->
+
+
+<!-- Load JS here for greater good =============================-->
+<script src="/vendor/flat-ui/js/jquery-1.8.3.min.js"></script>
+<script src="/vendor/jquery-ui-1.10.4/js/jquery-ui-1.10.4.custom.min.js"></script>
+<script src="/vendor/flat-ui/js/jquery.ui.touch-punch.min.js"></script>
+<script src="/vendor/flat-ui/js/bootstrap.min.js"></script>
+<script src="/vendor/flat-ui/js/bootstrap-select.js"></script>
+<script src="/vendor/flat-ui/js/bootstrap-switch.js"></script>
+<script src="/vendor/flat-ui/js/flatui-checkbox.js"></script>
+<script src="/vendor/flat-ui/js/flatui-radio.js"></script>
+<script src="/vendor/flat-ui/js/jquery.tagsinput.js"></script>
+<script src="/vendor/flat-ui/js/jquery.placeholder.js"></script>
+<script src="/vendor/bootstrap-growl/jquery.bootstrap-growl.min.js"></script>
+
+<script>
+
+    $.ajaxSetup({
+        headers: {
+            'X-XSRF-Token': $('meta[name="_token"]').attr('content')
+        }
+    });
+
+    var App = {};
+
+    App.notify = {
+        message: function(message, type){
+            if ($.isArray(message)) {
+                $.each(message, function(i, item){
+                    App.notify.message(item, type);
+                });
+            } else {
+                $.bootstrapGrowl(message, {
+                    type: type,
+                    delay: 4000,
+                    width: 'auto'
+                });
+            }
+        },
+
+        danger: function(message){
+            App.notify.message(message, 'danger');
+        },
+        success: function(message){
+            App.notify.message(message, 'success');
+        },
+        info: function(message){
+            App.notify.message(message, 'info');
+        },
+        warning: function(message){
+            App.notify.message(message, 'warning');
+        },
+        validationError: function(errors){
+            $.each(errors, function(i, fieldErrors){
+                App.notify.danger(fieldErrors);
+            });
+        }
+    };
+
+    /**
+     * @param  {*} requestData
+     */
+    var changePosition = function(requestData){
+
+        $.ajax({
+            'url': '/sort',
+            'type': 'POST',
+            'data': requestData,
+            'success': function(data) {
+                if (data.success) {
+                    App.notify.success('Saved!');
+                } else {
+                    App.notify.validationError(data.errors);
+                }
+            },
+            'error': function(){
+                App.notify.danger('Something wrong!');
+            }
+        });
+    };
+
+    $(document).ready(function(){
+        var $sortableTable = $('.sortable');
+        if ($sortableTable.length > 0) {
+            $sortableTable.sortable({
+                handle: '.sortable-handle',
+                axis: 'y',
+                update: function(a, b){
+
+                    var entityName = $(this).data('entityname');
+                    var $sorted = b.item;
+
+                    var $previous = $sorted.prev();
+                    var $next = $sorted.next();
+
+                    if ($previous.length > 0) {
+                        changePosition({
+                            parentId: $sorted.data('parentid'),
+                            type: 'moveAfter',
+                            entityName: entityName,
+                            id: $sorted.data('itemid'),
+                            positionEntityId: $previous.data('itemid')
+                        });
+                    } else if ($next.length > 0) {
+                        changePosition({
+                            parentId: $sorted.data('parentid'),
+                            type: 'moveBefore',
+                            entityName: entityName,
+                            id: $sorted.data('itemid'),
+                            positionEntityId: $next.data('itemid')
+                        });
+                    } else {
+                        App.notify.danger('Something wrong!');
+                    }
+                },
+                cursor: "move"
+            });
+        }
+        $('.sortable td').each(function(){
+            $(this).css('width', $(this).width() +'px');
+        });
+    });
+</script>
+</body>
+</html>
