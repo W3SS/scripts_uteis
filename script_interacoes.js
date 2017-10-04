@@ -169,7 +169,7 @@
         $('#EscolherCor').on('show.bs.modal', function(event) {
             var grade_id = $(this).attr('data-grade-id');
             var produto_id = $(this).attr('data-produto-id');
-            var url = "//app.lojaintegrada.com.br/painel/catalogo/grade/cor";
+            var url = "";
             $.post(url, {grade_id: grade_id, produto_id: produto_id}, function(data) {
                 $('#EscolherCor .modal-body').html(data);
                 if(produto_id) {
@@ -298,9 +298,9 @@
             var produto_id = '';
             var that = $(this);
             if ($(this).hasClass('ativo')) {
-                var url = '//app.lojaintegrada.com.br/painel/catalogo/produto/grade/imagem/desassociar';
+                var url = '';
             } else {
-                var url = '//app.lojaintegrada.com.br/painel/catalogo/produto/grade/imagem/associar';
+                var url = '';
             }
             $.post(url, {imagem_id:imagem_id, produto_id: produto_id, variacao_id: variacao_id}, function(data) {
                 if (data.status == 'sucesso') {
@@ -598,14 +598,14 @@
         $('#EscolherCategoriaGlobal').on('click', '.categoria-global', function(event) {
             event.preventDefault();
             var categoria_global_id = $(this).data('categoria');
-            $.get('//app.lojaintegrada.com.br/painel/catalogo/categoria_global', {categoria_global_id: categoria_global_id} ,function(data) {
+            $.get('', {categoria_global_id: categoria_global_id} ,function(data) {
                 $('#EscolherCategoriaGlobal  .modal-body').html(data);
             });
         });
         
         $('#EscolherCategoriaGlobal').on('click', '.ecolher-categoria-global', function(event) {
             var categoria_global_id = $(this).data('categoria');
-            $.get('//app.lojaintegrada.com.br/painel/catalogo/categoria_global/detalhar', {
+            $.get('', {
                 categoria_global_id: categoria_global_id,
                 produto_id: produto_id_global
             } ,function(data) {
@@ -770,7 +770,7 @@
                 }
 
                 // Cria a categoria.
-                $.post('//app.lojaintegrada.com.br/painel/catalogo/categoria/criar.json', params, function(data) {
+                $.post('', params, function(data) {
                     if (data.estado == 'SUCESSO') {
                         alert('Categoria criada com sucesso.');
                         inserir_a_categoria(data.resposta);
@@ -976,7 +976,7 @@
             $('#modal-categorias form').submit(function () {
                 var self = $(this);
                 var params = self.serialize();
-                $.post('//app.lojaintegrada.com.br/painel/catalogo/produto/editar/categoria/', params, function(data) {
+                $.post('', params, function(data) {
                     if (data.estado == 'SUCESSO') {
                         atualizar_seletor_categorias();
                         $('#modal-categorias').modal('hide');
@@ -1224,7 +1224,7 @@
                 nome: data.value,
                 categoria_id_pai: '-' // Categoria na raiz
             };
-            $.post('/painel/catalogo/categoria/criar.json', post_data, function(res) {
+            $.post('categoria/criar.json', post_data, function(res) {
                 if (res.resposta.estado == 'ERRO') {
                     callback(null, res.resposta.mensagem);
                 } else {
