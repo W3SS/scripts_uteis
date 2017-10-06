@@ -58,3 +58,51 @@
     "autoimport.doubleQuotes": true,
     "editor.cursorStyle": "line-thin",
 }
+
+
+outras features
+
+// Place your settings in this file to overwrite the default settings
+{
+    "window.zoomLevel": -1,
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.multiCursorModifier": "alt",
+    "editor.formatOnPaste": true,
+    "emmet.triggerExpansionOnTab": true,
+    "emmet.includeLanguages": { "blade": "html" },
+    "auto-close-tag.SublimeText3Mode": true,
+    "html.format.enable": true,
+    "html.format.wrapLineLength": 120,
+    "html.format.unformatted": "a, abbr, acronym, b, bdo, big, br, button, cite, code, dfn, em, i, img, input, kbd, label, map, object, q, samp, select, small, span, strong, sub, sup, textarea, tt, var",
+    "html.format.contentUnformatted": "pre",
+    "html.format.indentInnerHtml": true,
+    "html.format.maxPreserveNewLines": null,
+    "html.suggest.html5": true,
+    "html.autoClosingTags": true,
+    "html.validate.styles": true,
+    "html.validate.scripts": true,
+    "markdown.preview.fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'HelveticaNeue-Light', 'Ubuntu', 'Droid Sans', sans-serif",
+    "javascript.referencesCodeLens.enabled": true,
+    "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+    "javascript.format.insertSpaceBeforeAndAfterBinaryOperators": true,
+    "javascript.format.enable": true,
+    "javascript.validate.enable": true,
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": true,
+    "jsDocCompletion.enabled": true,
+    "terminal.integrated.scrollback": 1000,
+    "problems.autoReveal": true,
+    "gitlens.annotations.line.trailing.format": "${authorAgo} • ${message}",
+    "sublimeTextKeymap.promptV3Features": true,
+    "path-autocomplete.extensionOnImport": true,
+    "path-autocomplete.pathMappings": {},
+    "files.autoSave": "onFocusChange",
+    "editor.wordWrap": "on",
+    "files.associations": { "*.blade.php": "html" },
+    "emmet.showSuggestionsAsSnippets": true,
+    "closeTag.ignoreTags": null,
+    "editor.cursorStyle": "line-thin",
+    "material-icon-theme.angular.iconsEnabled": true,
+    "material-icon-theme.folders.icons": "classic",
+
+}
