@@ -1,0 +1,122 @@
+   <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
+        <link rel="icon" href="../../favicon.ico">
+    
+        <title>Navbar Template for Bootstrap</title>
+    
+        <!-- Bootstrap core CSS -->
+        <link media="all" type="text/css" rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }}">
+        <!-- Custom styles for this template -->
+        {!! Html::style('css/navbar.css') !!}
+    </head>
+    
+    <body id = "home">
+    <div class="container">
+        <!-- Static navbar -->
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">User Password Operations</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="inactive"><a href="#">Reset New User</a></li>
+                        <li class="inactive"><a href="#">Pending Users</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div><!--/.container-fluid -->
+        </nav>
+    
+        <!-- Main component for a primary marketing message or call to action -->
+        <div class="jumbotron">
+            <h1>Pending 1.0 Users</h1>
+            <p>A list of 1.0 users that have a change!me password as a result of this tool, and are awaiting password change.</p>
+        </div>
+    
+        <table class="table table-bordered" id = "user">
+            <tr>
+                <td>
+                    <b>Name</b>
+                </td>
+                <td>
+                    <b>Email</b>
+                </td>
+                <td>
+                    <b>Select</b>
+                </td>
+            </tr>
+            <div>
+                <tr v-repeat = "usr: v1_user">
+                    <td>
+                        @{{ usr.first_name }}
+                    </td>
+                    <td>
+                        @{{ usr.email_address }}
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-success" v-on="click: onClick(usr.email_address)">Revert Password To Original</button>
+                    </td>
+                </tr>
+            </div>
+        </table>
+       <div class="jumbotron">
+             <h1>Pending 2.0 Users</h1>
+             <p>A list of 2.0 users that have a change!me password as a result of this tool, and are awaiting password change.</p>
+         </div>
+         <table class="table table-bordered">
+             <tr>
+                 <td>
+                     <b>Name</b>
+                 </td>
+                 <td>
+                     <b>Email</b>
+                 </td>
+                 <td>
+                     <b>Select</b>
+                 </td>
+             </tr>
+             <tr v-repeat = "usr: v2_user">
+                 <td>
+                     @{{ usr.first_name }}
+                 </td>
+                 <td>
+                     @{{ usr.email_address }}
+                 </td>
+                 <td>
+                     <button type="button" class="btn btn-success" v-on="click: onClick(usr.email_address)">Revert Password To Original</button>
+                 </td>
+             </tr>
+         </table>
+    </div> <!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
+    <!-- Vue.js file REP  -->
+    <script src="/js/vue.js"></script>
+    <script src="/js/vue-resource.min.js"></script>
+    <!-- Main Vue file-->
+    <script src="/js/main.js"></script>
+    </body>
+    </html>
