@@ -1,0 +1,9 @@
+jQuery(function($){
+	$("#Cpf").mask("999.999.999-99");
+	$("#CpfResponsavel").mask("999.999.999-99");
+	$("#Matricula").mask("9999-999999-9");
+	$("#MatriculaResponsavel").mask("9999-999999-9");
+	$("#Cep").mask("99.999-999");
+	$("#TelefoneFixo").mask("(99)9999-9999");
+	$("#TelefoneCelular").mask("(99)9999-9999");
+});
