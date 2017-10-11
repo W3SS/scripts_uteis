@@ -1,0 +1,23 @@
+$(document).ready(function(){
+    $('input[type=checkbox]').change(function(){
+        var checked = $(this).attr('checked');
+        if (checked) {
+           $('.other').show();             
+        } else {
+            $('.other').hide();
+        }
+    });        
+});
+
+<div name="main">
+
+    <input type="checkbox" /> If this is checked... display the div below.. if not checked.. don't display anything.
+
+</div>
+
+
+<div class='other' name='other' title='other' style='display:none;'>
+<input/>
+<input/>
+<input/>
+</div>
