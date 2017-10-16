@@ -55,3 +55,8 @@ $(document).ready(function() {
     }
 
     document.getElementById('files').addEventListener('change', handleFileSelect, false);
+    
+                                                <input type="file" id="files" name="files[]" multiple />
+                                            <output id="list"></output>
+                                            <input type="file" class="form-control-file form-control load_imagem align-middle filestyle" name="img_exemplo" multiple id="img_exemplo" />
+                                            <a id="remove-imagem" class="mx-1"><i class="fa fa-times text-danger fa-2x" aria-hidden="true"></i></a>
