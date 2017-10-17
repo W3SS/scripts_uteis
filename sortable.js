@@ -363,3 +363,17 @@ function remove(){
 $("button.clone").on("click", clone);
 
 $("button.remove").on("click", remove);
+
+Sortable.create(simpleList, {
+  ghostClass: 'ghost'
+});
+
+
+
+
+// Generate 100 items
+simpleList.innerHTML = Array.apply(null,  new Array(12)).map(function (v, i) {
+  return '<div class="list-group-item">item ' +
+    (i + 1) +
+    '</div>';
+}).join('');
