@@ -1,0 +1,108 @@
+ function readURL(input) {
+        var file = document.getElementById("article_file").value;
+        console.log(file);
+        var originalname = file.replace(/C:\\fakepath\\/i, '');
+        console.log(name);
+        if (DST()) {
+            // Daylight Savings, EDT is UTC-4
+            var offset = "-4";
+        } else {
+            // Not Daylight Savings, EST is UTC-5
+            var offset = "-5";
+        }
+        var today = calcTime(offset);
+
+        var month = today.getMonth() + 1;
+
+        // appends 0 to monthes under 10
+        if (month < 10)
+            month = "0" + month.toString();
+
+        if ($('table.appendo.image-uploader tbody tr').length > 2)
+            $('table.appendo.image-uploader tbody tr').each(function (i, ele) {
+                if(i==1)
+                {
+                     $('#image-preview-path').attr('src','src="/images/tp.gif"');
+                     $('#image-path').attr('value','');
+                }
+                else if (i > 1)
+                {
+                    $(ele).remove();
+                }
+            });
+        $('.upload-article').attr('name', 'Filedata[]');
+
+        var files = $('#article_file')[0].files;
+        var name = [];
+        var extension = ['.jpg','jpeg','.gif','.png'];
+        var flag = 1;
+        name['invalid'] = 'invalid';
+        for (var z = 0; z < files.length; z++){
+            var ext = (files[z].name.substr(-4)).toLowerCase();
+            if($.inArray(ext, extension) != -1){
+
+            } else {
+                flag = 2;
+            }
+        }
+        var count = files.length;
+        if(count <= '6') {
+        if(flag == 1) {
+        for (var x = 0; x < files.length; x++)
+        {
+
+            if (x == 0) {
+                var file = files[x];
+                var hello = file['name'].replace(/\s/g, '');
+                var file_name = hello.replace(/[^.a-z0-9_-\s]/gi, '').replace(/[_\s]_/g, '-');
+                name[file['size']] = file_name;
+                console.log(files[x]);
+                var reader = new FileReader();
+                reader.addEventListener('load', function (e) {
+                    console.log(e)
+
+                    $('#image-preview-path').attr('src', e.target.result);
+                    $('#image-path').attr('value', "/images/uploads/" + today.getFullYear() + "/" + month + "/" + today.getDate() + "/" + name[e.total]);
+
+                });
+                reader.onerror = function (event) {
+                    console.error("File could not be read! Code " + event.target.error.code);
+                };
+                reader.readAsDataURL(file);
+            } else {
+                var file = files[x];
+                var hello = file['name'].replace(/\s/g, '');
+                var file_name = hello.replace(/[^.a-z0-9_-\s]/gi, '').replace(/[_\s]_/g, '-');
+                name[file['size']] = file_name;
+                console.log(files[x]);
+                var reader = new FileReader();
+                reader.addEventListener('load', function (e) {
+                    console.log(e)
+                    if ($('table.appendo>tbody:eq(0)>tr').length - 1 > 0)
+                        index = $('table.appendo>tbody:eq(0)>tr').length - 1
+                    else
+                        index = 'invalid';
+                    var table = $('table.appendo tbody tr:eq(1)').clone();
+                    table.find('img').attr('id', 'image-preview-path');
+                    table.find('img').attr('src', e.target.result);
+                    table.find('input').attr('id', 'image-path');
+                    table.find('input').attr('value', "/images/uploads/" + today.getFullYear() + "/" + month + "/" + today.getDate() + "/" + name[e.total]);
+                    $('table.appendo.image-uploader tbody').append(table);
+
+                });
+                reader.onerror = function (event) {
+                    console.error("File could not be read! Code " + event.target.error.code);
+
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+      } else {
+          alert('Not a valid file extension.');
+          $('#article_file').val("");
+        } 
+      } else {
+          alert('You have attempted to queue too many files.\nYou may select six file.');
+          $('#article_file').val("");
+      }
+    }
