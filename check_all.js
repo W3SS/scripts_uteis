@@ -26,3 +26,7 @@
         this.$el.prop("checked", c === a && 0 !== a)
     }
 })(jQuery, window, document);
+
+var arr = [1, 2, 3, 4, 5, 6];
+
+console.log(arr.filter(x => x % 2 == 0))
