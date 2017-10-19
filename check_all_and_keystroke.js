@@ -30,3 +30,28 @@
 var arr = [1, 2, 3, 4, 5, 6];
 
 console.log(arr.filter(x => x % 2 == 0))
+
+$('#myFormField').bind('change', function(){
+ $('#myTargetSpan').text($(this).val());
+});
+
+$('#inputid').keyup(function() {
+    $('#somediv').html($(this).val());
+});
+
+Use jQuery Data Link plug-in that is able to bind input elements to other elements or even to JavaScript objects. 
+Either a one-way or a two-way link can be established.
+
+or
+Use this code to update div
+
+on each keystroke
+
+$("#YourInputID").keyup(function(){
+    $("#YourDivID").text(this.value);
+});
+when user leaves input
+$("#YourInputID").blur(function(){
+    $("#YourDivID").text(this.value);
+});
+
