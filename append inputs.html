@@ -34,3 +34,9 @@ https://pt.stackoverflow.com/questions/176551/mascara-de-input-com-zeros-%C3%A0-
     $("#gera_ref").on('click', function() {
         $("#referencia").val().replace();
     });
+
+$('.reset').on('click', function(){
+    if($('.list-items').length > 1) {
+        $('.list-items:last').remove();
+    }
+})
