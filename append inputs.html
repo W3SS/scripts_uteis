@@ -39,4 +39,78 @@ $('.reset').on('click', function(){
     if($('.list-items').length > 1) {
         $('.list-items:last').remove();
     }
-})
+});
+        
+        <input type=file>
+<input type=button class=hide value="Adicionar outro">input[type=file] {
+    float: left;
+    display: block;
+}
+.hide {
+    display: none;
+    float: left;
+}
+       
+function verificaMostraBotao(){
+    $('input[type=file]').each(function(index){
+        if ($('input[type=file]').eq(index).val() != ""){
+            $('.hide').show();
+        }
+    });
+}
+
+$('input[type=file]').on("change", function(){
+  verificaMostraBotao();
+});
+
+$('.hide').on("click", function(){
+    $(document.body).append($('<input />', {type: "file" }).change(verificaMostraBotao));
+    $('.hide').hide();
+});
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+        $(input).next()
+        .attr('src', e.target.result)
+    };
+    reader.readAsDataURL(input.files[0]);
+    }
+    else {
+        var img = input.value;
+        $(input).next().attr('src',img);
+    }
+} 
+
+function verificaMostraBotao(){
+    $('input[type=file]').each(function(index){
+        if ($('input[type=file]').eq(index).val() != ""){
+            readURL(this);
+            $('.hide').show();
+        }
+    });
+}
+
+$('input[type=file]').on("change", function(){
+  verificaMostraBotao();
+});
+
+$('.hide').on("click", function(){
+    $(document.body).append($('<input />', {type: "file" }).change(verificaMostraBotao));
+    $(document.body).append($('<img />'));
+    $('.hide').hide();
+});
+        
+        input[type=file] {
+    float: left;
+    display: block;
+}
+.hide {
+    display: none;
+    float: left;
+}
+        
+        <input type=file>
+<img />
+<input type=button class=hide value="Adicionar outro">
