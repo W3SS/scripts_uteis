@@ -1,0 +1,160 @@
+<div id="new_pricesheet_container">
+	<!-- List all available materials -->
+	<ul id="material_list" class="sort">
+		<li class="sort-item">Material 1</li>
+        <li class="sort-item">Material 2</li>
+        <li class="sort-item">Material 3</li>
+        <li class="sort-item">Material 4</li>
+        <li class="sort-item">Material 5</li>
+        <li class="sort-item">Material 6</li>
+        <li class="sort-item">Material 7</li>
+        <li class="sort-item">Material 8</li>
+        <li class="sort-item">Material 9</li>
+        <li class="sort-item">Material 10</li>
+	</ul>
+	<!-- Create workspace for materials to be placed -->
+	<div id="group_container_1">
+	</div>
+	<div id="group_container_2">
+	</div>
+</div>
+#app_menu {
+	margin-bottom: 10px;
+}
+#app_menu select {
+	margin: 3px;
+} 
+#app_menu label {
+	margin-top: 7px;
+}
+#new_pricesheet_container {
+	width: 100%;
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+	-o-user-select: none; /* Opera */
+	user-select: none;
+}
+#group_container_1 {
+	border: 1px solid black;
+	border-right: 1px dotted #666;
+	margin: 0px;
+	margin-left: 9px;
+	padding: 10px;
+	display: inline-block;
+	min-height: 500px;
+	width: 325px;
+	float: left;
+}
+#group_container_2 {
+	border: 1px solid black;
+	border-left: 1px dotted #666;
+	padding: 10px;
+	display: inline-block;
+	min-height: 500px;
+	width: 325px;
+	margin: 0px;
+	float: left;
+}
+#material_list {
+	padding: 5px;
+	display: inline-block;
+	overflow-y: scroll;
+	overflow-x: auto;
+	height: 510px;
+	width: 265px;
+	float: left;
+	padding: 5px;
+	border: 1px solid black;
+}
+ul {
+	display: inline-block;
+	list-style: none;
+	margin-left: 0px;
+}
+.sort-item {
+	border: 1px solid black;
+	padding: 5px;
+	margin: 5px;
+	background: white;
+}
+.ui-sortable li {
+	padding: 5px;
+	margin: 5px;
+}
+.group {
+	background: white;
+	padding: 10px;
+	border: 1px black solid;
+	display: inline-block;
+	margin: 10px 5px;
+	width: 90%;
+}
+.drag-hover {
+	border: none;
+	background: #9F9;
+}
+.sort {
+	border: 1px solid black;
+	padding: 10px;
+	display: block;
+}
+$(document).ready( function () {
+	$('#material_list').group();
+	$('#group_container_1, #group_container_2').group_holder();
+});
+
+(function ($) {
+})(jQuery);
+$.widget('ui.group_holder', {
+	options: {
+		cursor: 'move',
+		groupName: '.sort',
+		placeholder: 'ui-state-highlight',
+		forcePlaceholderSize: true,
+		accept: 'li',
+		hoverClass: 'drag-hover',
+	},
+	_create: function () {
+		//init variables
+		var options = this.options;
+		var element = this.element;
+		//create identifying class for sharing sortable group lists
+		$(element).addClass('group-holder');
+		//craete a dropzone for new groups
+		$(element).droppable({ 
+			accept: options.accept,
+			hoverClass: options.hoverClass,
+			drop: function (event, ui) {
+				$(element).append('<div><h3>Group Title</h3><ul class="sort"></ul></div>');
+				$('div', element).addClass('group', 'fast').droppable({
+					greedy: true
+				});
+				$('ul', element).group();//.receive();
+				
+			}
+		}).group({groupName: '.group-holder'});
+	}
+});
+$.widget('ui.group', {
+	options: {
+		cursor: 'move',
+		groupName: '.sort',
+		placeholder: 'ui-state-highlight',
+		forcePlaceholderSize: true,
+	},
+	_create: function () {
+		var options = this.options;
+		var element = this.element;
+		$(element).sortable( {
+			revert: 'fast',
+			connectWith: options.groupName,
+			cursor: options.cursor,
+			placeholder: options.placeholder,
+			forcePlaceholderSize: options.forcePlaceholderSize,
+			receive: function (event, ui) {
+				console.log(ui);
+			}
+		});
+	}
+});
